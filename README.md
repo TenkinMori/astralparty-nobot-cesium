@@ -4,6 +4,7 @@
   <img src="icon.png" width="96" alt="icon">
 </p>
 
+> **游戏：吉星派对（Astral Party）**
 > **插件名：缺人时不补人机** ｜ **作者：TenkinMori**
 >
 > 这是一个 CesiumLoader 托管模组：把 `NoBotMod.dll` 放进
