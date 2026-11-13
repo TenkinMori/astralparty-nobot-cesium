@@ -1,0 +1,1 @@
+﻿{"id":"NoBotMod","name":"开局不补 Bot","version":"1.0.0","author":"TenkinMori","description":"创建房间点「开始」时强制 StartGameC2S.IsAddBot = false，不再弹「是否补充 Bot」。","permissions":529,"sdkVersion":"3.1.1","dependencies":[]}
