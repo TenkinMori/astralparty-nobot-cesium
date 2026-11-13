@@ -28,12 +28,12 @@ namespace NoBotMod
         private double _nextEnsure;
         private bool _logged;
 
-        public override string Name { get { return "开局不补 Bot"; } }
-        public override string Version { get { return "1.0.0"; } }
+        public override string Name { get { return "缺人时不补人机"; } }
+        public override string Version { get { return "1.1.0"; } }
         public override string Author { get { return "TenkinMori"; } }
         public override string Description
         {
-            get { return "创建房间点「开始」时强制 IsAddBot=false，直接开局，不再弹补 Bot。"; }
+            get { return "在自定义房间缺人时不自动补充人机，直接开局。"; }
         }
 
         public override void OnInitialize()

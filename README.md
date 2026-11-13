@@ -1,15 +1,23 @@
-# NoBot（CesiumLoader 版）
+# 缺人时不补人机（CesiumLoader 版）
 
+<p align="left">
+  <img src="icon.png" width="96" alt="icon">
+</p>
+
+> **插件名：缺人时不补人机** ｜ **作者：TenkinMori**
+>
 > **这是 CesiumLoader 模组版本**：一个托管模组 `NoBotMod.dll`，放进
 > `AstralParty_ModLoader/mods/NoBotMod/` 就生效。
 >
 > 它**不是** [astralparty-nobot](https://github.com/TenkinMori/astralparty-nobot) 那个
 > `hid.dll`（原生代理 + 内嵌补丁包）版本——两个版本功能一样，选一个装即可。
 
-## 是什么
+## 作用
 
-创建房间后点「开始」，客户端会发 `StartGameC2S { IsAddBot = true }`，服务端据此补 Bot。
-本模组在发包前把 `IsAddBot` 强制改成 `false`，于是**不弹「是否补充 Bot」，直接开局**。
+**在自定义房间缺人时不自动补充人机。**
+
+创建房间后点「开始」，客户端会发 `StartGameC2S { IsAddBot = true }`，服务端据此补人机。
+本模组在发包前把 `IsAddBot` 强制改成 `false`，于是人不够也直接开局，不补人机。
 
 - 只改本机发出去的那一个字段，不改服务端、不改热更包
 - 不需要 hid.dll、不需要按客户端版本重打 payload
@@ -18,6 +26,7 @@
 
 | | **CesiumLoader 版**（本仓库） | hid.dll 版（astralparty-nobot） |
 |---|---|---|
+| 插件名 | 缺人时不补人机 | NoBot |
 | 载体 | `NoBotMod.dll`（托管模组） | `hid.dll`（原生代理 + 内嵌补丁包） |
 | 依赖 | 需要 CesiumLoader 3.x | 无 |
 | 安装位置 | `AstralParty_ModLoader/mods/NoBotMod/` | 游戏根目录 |
@@ -34,7 +43,8 @@
    ```text
    游戏目录/AstralParty_ModLoader/mods/NoBotMod/
    ├─ NoBotMod.dll
-   └─ NoBotMod.json
+   ├─ NoBotMod.json
+   └─ icon.png
    ```
 
 3. 重启游戏
@@ -43,7 +53,7 @@
 
 ```text
 [NoBotMod] 已接管 StartGameC2S：IsAddBot 强制 false
-[开局不补 Bot] 初始化完成 (状态: Initialized)
+[缺人时不补人机] 初始化完成 (状态: Initialized)
 ```
 
 卸载：删除 `mods/NoBotMod/` 文件夹，重启游戏。
@@ -85,6 +95,11 @@ pwsh -File build.ps1
 - `lib/CesiumLoader.SDK.dll`：CesiumLoader SDK（MIT，随仓库提供以便直接构建）
 - `refs/game/*.dll`：游戏热更程序集（2026-11-12 国服版本），只用于编译引用；
   游戏更新后可用 CesiumLoader 仓库的 `tools/fetch-game-refs.ps1` 重新提取，或替换本目录
+
+## 版本
+
+- `1.1.0`：插件改名 **缺人时不补人机**、新图标、作者 TenkinMori
+- `1.0.0`：首个 CesiumLoader 版（原名 NoBot / 开局不补 Bot）
 
 ## 兼容性
 
