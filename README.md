@@ -6,11 +6,8 @@
 
 > **插件名：缺人时不补人机** ｜ **作者：TenkinMori**
 >
-> **这是 CesiumLoader 模组版本**：一个托管模组 `NoBotMod.dll`，放进
+> 这是一个 CesiumLoader 托管模组：把 `NoBotMod.dll` 放进
 > `AstralParty_ModLoader/mods/NoBotMod/` 就生效。
->
-> 它**不是** [astralparty-nobot](https://github.com/TenkinMori/astralparty-nobot) 那个
-> `hid.dll`（原生代理 + 内嵌补丁包）版本——两个版本功能一样，选一个装即可。
 
 ## 作用
 
@@ -20,18 +17,17 @@
 本模组在发包前把 `IsAddBot` 强制改成 `false`，于是人不够也直接开局，不补人机。
 
 - 只改本机发出去的那一个字段，不改服务端、不改热更包
-- 不需要 hid.dll、不需要按客户端版本重打 payload
+- 纯托管实现，不用改游戏文件
 
-## 两个版本对比
+## 特点
 
-| | **CesiumLoader 版**（本仓库） | hid.dll 版（astralparty-nobot） |
-|---|---|---|
-| 插件名 | 缺人时不补人机 | NoBot |
-| 载体 | `NoBotMod.dll`（托管模组） | `hid.dll`（原生代理 + 内嵌补丁包） |
-| 依赖 | 需要 CesiumLoader 3.x | 无 |
-| 安装位置 | `AstralParty_ModLoader/mods/NoBotMod/` | 游戏根目录 |
-| 游戏更新后 | 只要 `StartGameC2SCall` 签名不变就继续有效 | 热更包大小变了要重新生成 payload |
-| 原理 | 运行时替换 RPC 实例 | 拦截 `CreateFileW`，把热更包换成补丁版 |
+| | 说明 |
+|---|---|
+| 载体 | `NoBotMod.dll`（CesiumLoader 托管模组） |
+| 依赖 | CesiumLoader 3.x |
+| 安装位置 | `AstralParty_ModLoader/mods/NoBotMod/` |
+| 游戏更新后 | 只要 `StartGameC2SCall` 签名不变就继续有效 |
+| 原理 | 运行时替换 RPC 实例，不发额外包、不写文件 |
 
 ## 安装
 
@@ -99,7 +95,7 @@ pwsh -File build.ps1
 ## 版本
 
 - `1.1.0`：插件改名 **缺人时不补人机**、新图标、作者 TenkinMori
-- `1.0.0`：首个 CesiumLoader 版（原名 NoBot / 开局不补 Bot）
+- `1.0.0`：首个版本
 
 ## 兼容性
 
